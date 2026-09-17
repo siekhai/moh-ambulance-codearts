@@ -1,0 +1,35 @@
+{
+  "app": {
+    "title": "រថយន្តសង្គ្រោះ",
+    "subtitle": "ក្រសួងសុខាភិបាល"
+  },
+  "request": {
+    "button": "ស្នើសុំរថយន្តសង្គ្រោះ",
+    "status": {
+      "preparing": "កំពុងរៀបចំ",
+      "en_route": "កំពុងធ្វើដំណើរ",
+      "arrived": "បានមកដល់",
+      "received": "បានទទួល"
+    }
+  },
+  "form": {
+    "incident_type": "ប្រភេទហេតុការណ៍",
+    "patient_condition": "ស្ថានភាពអ្នកជំងឺ",
+    "requester_name": "អ្នកស្នើសុំ",
+    "phone": "លេខទូរស័ព្ទ",
+    "relationship": "អ្នកស្គាល់គ្នា"
+  },
+  "tracking": {
+    "eta": "ម៉ោងទៅដល់",
+    "distance": "ចម្ងាយ",
+    "order_code": "លេខកូដការណ៍"
+  },
+  "rating": {
+    "title": "វាយតម្លៃសេវាកម្ម",
+    "submit": "បញ្ជូន"
+  },
+  "completion": {
+    "thank_you": "សូមអរគុណ!",
+    "back_home": "ត្រឡប់ទៅទំព័រដើម"
+  }
+}

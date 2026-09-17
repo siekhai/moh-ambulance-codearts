@@ -1,0 +1,11 @@
+{
+  "app": { "title": "Ambulance", "subtitle": "Ministry of Health" },
+  "request": {
+    "button": "Request Ambulance",
+    "status": { "preparing": "Preparing", "en_route": "En Route", "arrived": "Arrived", "received": "Received" }
+  },
+  "form": { "incident_type": "Incident Type", "patient_condition": "Patient Condition", "requester_name": "Requester Name", "phone": "Phone Number", "relationship": "Relationship" },
+  "tracking": { "eta": "ETA", "distance": "Distance", "order_code": "Order Code" },
+  "rating": { "title": "Rate Service", "submit": "Submit" },
+  "completion": { "thank_you": "Thank You!", "back_home": "Back to Home" }
+}

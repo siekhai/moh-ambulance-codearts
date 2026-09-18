@@ -1,0 +1,232 @@
+name: CI/CD
+
+# MoH Ambulance Mini App — CI/CD pipeline
+#
+# Triggers:
+#   - push to develop  -> runs CI + E2E
+#   - PR to develop    -> runs CI only
+#   - push to main      -> runs CD (release artifact build/upload)
+#   - workflow_dispatch -> manual trigger (runs all matching jobs on the chosen ref)
+#
+# Skipped (not selected during onboarding): SonarCloud, JFrog, Semgrep,
+# Azure DevOps Pipelines, Huawei ECS deployment.
+#
+# No secrets/variables required.
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # CI: type-check, unit tests, build  (runs on push/PR to develop, push to main)
+  # ---------------------------------------------------------------------------
+  ci:
+    name: CI (typecheck, unit, build)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies (workspaces)
+        run: npm install
+
+      - name: Type check frontend
+        working-directory: frontend
+        run: npx tsc --noEmit
+
+      - name: Type check backend
+        working-directory: backend
+        run: npx tsc --noEmit
+
+      - name: Unit tests (backend, vitest)
+        working-directory: backend
+        run: npx vitest run
+
+      - name: Build frontend (tsc + vite)
+        working-directory: frontend
+        run: npm run build
+
+      - name: Build backend (tsc -> dist/)
+        working-directory: backend
+        run: npm run build
+
+      - name: Upload frontend dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-frontend-dist
+          path: frontend/dist
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Upload backend dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-backend-dist
+          path: backend/dist
+          if-no-files-found: warn
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # E2E: Playwright (35 tests) — only on push to develop, after CI passes
+  # ---------------------------------------------------------------------------
+  e2e:
+    name: E2E (Playwright)
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    env:
+      BACKEND_PORT: 3000
+      FRONTEND_PORT: 5173
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies (workspaces)
+        run: npm install
+
+      - name: Install Playwright chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build backend
+        working-directory: backend
+        run: npm run build
+
+      - name: Start backend (port 3000)
+        working-directory: backend
+        env:
+          PORT: 3000
+        run: |
+          nohup npm run start > "$GITHUB_WORKSPACE/backend.log" 2>&1 &
+          echo $! > "$GITHUB_WORKSPACE/backend.pid"
+          echo "Backend PID: $(cat $GITHUB_WORKSPACE/backend.pid)"
+
+      - name: Start frontend (Vite dev, port 5173)
+        working-directory: frontend
+        run: |
+          nohup npm run dev > "$GITHUB_WORKSPACE/frontend.log" 2>&1 &
+          echo $! > "$GITHUB_WORKSPACE/frontend.pid"
+          echo "Frontend PID: $(cat $GITHUB_WORKSPACE/frontend.pid)"
+
+      - name: Wait for backend (/health)
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sf "http://localhost:${BACKEND_PORT}/health" > /dev/null 2>&1; then
+              echo "Backend ready after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "::error::Backend failed to start within 60s"
+          echo "----- backend.log -----"
+          cat "$GITHUB_WORKSPACE/backend.log" || true
+          exit 1
+
+      - name: Wait for frontend (Vite)
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sf "http://localhost:${FRONTEND_PORT}/" > /dev/null 2>&1; then
+              echo "Frontend ready after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "::error::Frontend failed to start within 60s"
+          echo "----- frontend.log -----"
+          cat "$GITHUB_WORKSPACE/frontend.log" || true
+          exit 1
+
+      - name: Run Playwright E2E
+        run: npx playwright test
+
+      - name: Upload Playwright report & traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            test-report/
+            test-results/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-server-logs
+          path: |
+            backend.log
+            frontend.log
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Cleanup servers
+        if: always()
+        run: |
+          [ -f "$GITHUB_WORKSPACE/backend.pid" ]  && kill "$(cat $GITHUB_WORKSPACE/backend.pid)"  2>/dev/null || true
+          [ -f "$GITHUB_WORKSPACE/frontend.pid" ] && kill "$(cat $GITHUB_WORKSPACE/frontend.pid)" 2>/dev/null || true
+
+  # ---------------------------------------------------------------------------
+  # CD: build & upload release artifacts — only on push to main (manual merge)
+  # No deployment target selected; artifacts are uploaded for downstream release.
+  # ---------------------------------------------------------------------------
+  cd:
+    name: CD (release artifacts)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies (workspaces)
+        run: npm install
+
+      - name: Build frontend
+        working-directory: frontend
+        run: npm run build
+
+      - name: Build backend
+        working-directory: backend
+        run: npm run build
+
+      - name: Upload release frontend dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-frontend-dist
+          path: frontend/dist
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload release backend dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-backend-dist
+          path: backend/dist
+          if-no-files-found: error
+          retention-days: 30

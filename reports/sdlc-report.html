@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoH Ambulance Mini App — Sprint 1 Report</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #C80D13, #a00b10); color: white; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
+.header h1 { font-size: 28px; margin-bottom: 8px; }
+.header .meta { display: flex; gap: 24px; font-size: 14px; opacity: 0.9; }
+.badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.badge-pass { background: #1a7f37; color: white; }
+.badge-fail { background: #d1242f; color: white; }
+.badge-skip { background: #6e7781; color: white; }
+.badge-warn { background: #bf8700; color: white; }
+.card { background: white; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.card h2 { font-size: 20px; margin-bottom: 16px; border-bottom: 2px solid #e1e4e8; padding-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e1e4e8; }
+th { background: #f6f8fa; font-weight: 600; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.retro { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.retro-col { background: #f6f8fa; border-radius: 8px; padding: 16px; }
+.retro-col h3 { margin-bottom: 12px; font-size: 16px; }
+.retro-col ul { list-style: disc; padding-left: 20px; }
+.retro-col li { margin-bottom: 8px; font-size: 14px; }
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+.stat { background: white; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.stat .num { font-size: 32px; font-weight: 700; }
+.stat .label { font-size: 12px; color: #6e7781; text-transform: uppercase; }
+details { margin-top: 12px; }
+summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>MoH Ambulance Mini App — Sprint 1 Report</h1>
+    <div class="meta">
+      <span>GitHub: <a href="https://github.com/siekhai/moh-ambulance-codearts" target="_blank" style="color:#fff;text-decoration:underline;">siekhai/moh-ambulance-codearts</a></span>
+      <span>Sprint: 2026-09-17 → 2026-09-18</span>
+      <span>Status: <span class="badge badge-pass">RELEASED</span></span>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num" style="color:#1a7f37;">35</div><div class="label">E2E Tests Pass</div></div>
+    <div class="stat"><div class="num" style="color:#1a7f37;">34</div><div class="label">Unit Tests Pass</div></div>
+    <div class="stat"><div class="num" style="color:#0969da;">4</div><div class="label">Tasks Done</div></div>
+    <div class="stat"><div class="num" style="color:#C80D13;">1</div><div class="label">Bug Fixed</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Pipeline Summary</h2>
+    <table>
+      <thead><tr><th>Step</th><th>Status</th><th>Agent</th><th>Key Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>0 — Onboarding</td><td><span class="badge badge-pass">Pass</span></td><td>PM</td><td>Skill installed, 8 agents, MCP configured</td></tr>
+        <tr><td>0.F — Figma-to-Code</td><td><span class="badge badge-pass">Pass</span></td><td>PM + Figma Design</td><td>requirement.md + tasks.md + figma-extract.md created</td></tr>
+        <tr><td>1 — Requirement Breakdown</td><td><span class="badge badge-pass">Pass</span></td><td>PM</td><td>84 Azure DevOps work items, 31 GitHub issues</td></tr>
+        <tr><td>2 — Sprint Start</td><td><span class="badge badge-pass">Pass</span></td><td>PM + Dev</td><td>Repo initialized, develop branch, Sprint 1 iteration</td></tr>
+        <tr><td>3 — Development</td><td><span class="badge badge-pass">Pass</span></td><td>Frontend + Backend</td><td>PR #32 (tokens+i18n) + PR #33 (Google Maps)</td></tr>
+        <tr><td>4 — Code Review</td><td><span class="badge badge-pass">Pass</span></td><td>Code Reviewer</td><td>Both PRs reviewed, API key leak fixed, merged</td></tr>
+        <tr><td>5 — E2E Testing</td><td><span class="badge badge-pass">Pass</span></td><td>Tester</td><td>35/35 E2E pass, BUG-FE-001 fixed, Azure DevOps updated</td></tr>
+        <tr><td>6 — CI/CD</td><td><span class="badge badge-warn">Partial</span></td><td>DevOps</td><td>CI job passes, E2E CI job fails (env difference)</td></tr>
+        <tr><td>7 — Release</td><td><span class="badge badge-pass">Pass</span></td><td>PM + Dev</td><td>PR #34 merged develop → main</td></tr>
+        <tr><td>8 — Deploy</td><td><span class="badge badge-skip">Skipped</span></td><td>—</td><td>No deploy target selected</td></tr>
+        <tr><td>9 — Sprint Close</td><td><span class="badge badge-pass">Pass</span></td><td>PM + Dev</td><td>9 work items closed, retro + HTML report</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Sprint 1 Deliverables</h2>
+    <table>
+      <thead><tr><th>Task</th><th>PR</th><th>Branch</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>FE-001: Design Token System</td><td><a href="https://github.com/siekhai/moh-ambulance-codearts/pull/32" target="_blank">#32</a></td><td>feature/frontend/design-tokens-i18n</td><td><span class="badge badge-pass">Merged</span></td></tr>
+        <tr><td>FE-002: Khmer i18n Setup</td><td><a href="https://github.com/siekhai/moh-ambulance-codearts/pull/32" target="_blank">#32</a></td><td>feature/frontend/design-tokens-i18n</td><td><span class="badge badge-pass">Merged</span></td></tr>
+        <tr><td>BE-009: Google Maps Integration</td><td><a href="https://github.com/siekhai/moh-ambulance-codearts/pull/33" target="_blank">#33</a></td><td>feature/backend/google-maps-integration</td><td><span class="badge badge-pass">Merged</span></td></tr>
+        <tr><td>DO-002: API Key Management</td><td><a href="https://github.com/siekhai/moh-ambulance-codearts/pull/33" target="_blank">#33</a></td><td>feature/backend/google-maps-integration</td><td><span class="badge badge-pass">Merged</span></td></tr>
+        <tr><td>BUG-FE-001: Fonts not loaded</td><td>—</td><td>develop</td><td><span class="badge badge-pass">Fixed</span></td></tr>
+        <tr><td>CI/CD Pipeline</td><td>—</td><td>develop</td><td><span class="badge badge-warn">CI pass, E2E CI fail</span></td></tr>
+        <tr><td>Sprint 1 Release</td><td><a href="https://github.com/siekhai/moh-ambulance-codearts/pull/34" target="_blank">#34</a></td><td>develop → main</td><td><span class="badge badge-pass">Merged</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>E2E Test Results (Step 5)</h2>
+    <table>
+      <thead><tr><th>Test Suite</th><th>Tests</th><th>Passed</th><th>Failed</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Backend API — Maps endpoints</td><td>14</td><td>14</td><td>0</td><td><span class="badge badge-pass">Pass</span></td></tr>
+        <tr><td>Backend API — Ambulance /nearby</td><td>8</td><td>8</td><td>0</td><td><span class="badge badge-pass">Pass</span></td></tr>
+        <tr><td>Backend API — Misc (health, 404)</td><td>3</td><td>3</td><td>0</td><td><span class="badge badge-pass">Pass</span></td></tr>
+        <tr><td>Frontend — Smoke (i18n, tokens)</td><td>9</td><td>9</td><td>0</td><td><span class="badge badge-pass">Pass</span></td></tr>
+        <tr><td>Frontend — Visual baseline</td><td>1</td><td>1</td><td>0</td><td><span class="badge badge-pass">Pass</span></td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>35</strong></td><td><strong>35</strong></td><td><strong>0</strong></td><td><span class="badge badge-pass">100%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>CI/CD Pipeline Status</h2>
+    <table>
+      <thead><tr><th>Job</th><th>Trigger</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>CI (typecheck + unit + build)</td><td>push/PR → develop</td><td><span class="badge badge-pass">Pass</span></td><td>All 11 steps green</td></tr>
+        <tr><td>E2E (Playwright)</td><td>push → develop</td><td><span class="badge badge-fail">Fail</span></td><td>Environment difference — passes locally</td></tr>
+        <tr><td>CD (release artifacts)</td><td>push → main</td><td><span class="badge badge-skip">Not triggered</span></td><td>Triggers on next push to main</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;font-size:13px;color:#6e7781;">
+      <a href="https://github.com/siekhai/moh-ambulance-codearts/actions" target="_blank">View GitHub Actions runs →</a>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Sprint Retrospective</h2>
+    <div class="retro">
+      <div class="retro-col">
+        <h3 style="color:#1a7f37;">What Went Well</h3>
+        <ul>
+          <li>Figma-to-Code flow produced comprehensive design tokens (140+) and i18n strings (120+) in one pass</li>
+          <li>Parallel frontend + backend development completed without conflicts</li>
+          <li>Code review caught critical API key leak (C1) before merge</li>
+          <li>E2E testing caught fonts.css import bug (BUG-FE-001) before release</li>
+          <li>All 35 E2E tests + 34 unit tests pass locally</li>
+          <li>Azure DevOps work items tracked and updated throughout</li>
+          <li>CI pipeline (typecheck + unit + build) passes on GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="retro-col">
+        <h3 style="color:#d1242f;">What Could Improve</h3>
+        <ul>
+          <li>E2E tests fail in CI (Ubuntu) but pass locally (Windows) — need environment parity</li>
+          <li>theme.ts had JSX in .ts file — should have been .tsx from start</li>
+          <li>package-lock.json wasn't committed initially — CI cache failed</li>
+          <li>Vitest picked up Playwright E2E files — needed explicit exclude config</li>
+          <li>import.meta.env needed vite/client types — should be in default tsconfig</li>
+          <li>API key leak (C1) should have been caught during development, not review</li>
+        </ul>
+      </div>
+      <div class="retro-col">
+        <h3 style="color:#0969da;">Action Items for Sprint 2</h3>
+        <ul>
+          <li>Fix E2E CI environment — investigate Ubuntu-specific failures</li>
+          <li>Add pre-commit hooks for tsc --noEmit to catch type errors early</li>
+          <li>Ensure all lock files are committed from project start</li>
+          <li>Add vitest.config.ts to frontend as well (preventive)</li>
+          <li>Review API response shapes for sensitive data before PR submission</li>
+        </ul>
+      </div>
+      <div class="retro-col">
+        <h3 style="color:#bf8700;">Metrics</h3>
+        <ul>
+          <li>Sprint duration: 2 days (2026-09-17 → 2026-09-18)</li>
+          <li>PRs merged: 3 (#32, #33, #34)</li>
+          <li>Commits: 7 on develop</li>
+          <li>Work items closed: 9/9 (100%)</li>
+          <li>Bugs found: 2 (1 critical, 1 high) — both fixed</li>
+          <li>Test coverage: 35 E2E + 34 unit = 69 total tests</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Azure DevOps Work Items</h2>
+    <table>
+      <thead><tr><th>ID</th><th>Task</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><td>#27</td><td>FE-001: Color scale + typography tokens</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#28</td><td>FE-001: Shadow + radius + spacing tokens</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#29</td><td>FE-001: ThemeProvider + useTheme</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#31</td><td>FE-002: i18next config + Khmer locale</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#32</td><td>FE-002: Translation resource files</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#33</td><td>FE-002: Font loading (Kantumruy Pro)</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#35</td><td>BE-009: Geocoding service</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#36</td><td>BE-009: Routing/directions + ETA</td><td><span class="badge badge-pass">Closed</span></td></tr>
+        <tr><td>#38</td><td>DO-002: API key management docs</td><td><span class="badge badge-pass">Closed</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="text-align:center;padding:20px;color:#6e7781;font-size:13px;">
+    Generated by SDLC Agentic Pipeline — Huawei Cloud CodeArts Agent<br>
+    Sprint 1 Report — 2026-09-18
+  </div>
+</div>
+</body>
+</html>

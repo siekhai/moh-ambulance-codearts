@@ -1,0 +1,154 @@
+/* =============================================================================
+   MoH Ambulance Mini App — Font Loading
+   -----------------------------------------------------------------------------
+   Primary Khmer font: Kantumruy Pro (Google Fonts CDN)
+   Latin / numbers:    Inter (Google Fonts CDN)
+   Secondary:          Roboto (Google Fonts CDN)
+   iOS fallback:       SF Pro (system)
+   =============================================================================
+   Strategy: @import Google Fonts CSS2 with full weight ranges, plus local
+   @font-face fallbacks. Kantumruy Pro supports Khmer + Latin subsets.
+   ============================================================================= */
+
+/* --- Google Fonts CDN (Kantumruy Pro + Inter + Roboto) --- */
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+/* =============================================================================
+   @font-face declarations (local fallbacks — used when CDN unavailable)
+   Order: local() first, then url() to CDN woff2.
+   ============================================================================= */
+
+/* --- Kantumruy Pro (primary Khmer font) --- */
+@font-face {
+  font-family: 'Kantumruy Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Kantumruy Pro Regular'), local('KantumruyPro-Regular'),
+       url('https://fonts.gstatic.com/s/kantumruypro/v1/kantumruy-pro-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Kantumruy Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Kantumruy Pro Medium'), local('KantumruyPro-Medium'),
+       url('https://fonts.gstatic.com/s/kantumruypro/v1/kantumruy-pro-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Kantumruy Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Kantumruy Pro SemiBold'), local('KantumruyPro-SemiBold'),
+       url('https://fonts.gstatic.com/s/kantumruypro/v1/kantumruy-pro-semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Kantumruy Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Kantumruy Pro Bold'), local('KantumruyPro-Bold'),
+       url('https://fonts.gstatic.com/s/kantumruypro/v1/kantumruy-pro-bold.woff2') format('woff2');
+}
+
+/* --- Inter (Latin / numbers) --- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Inter Regular'), local('Inter-Regular'),
+       url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduqm-1.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Inter Medium'), local('Inter-Medium'),
+       url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduqm-1.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Inter SemiBold'), local('Inter-SemiBold'),
+       url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduqm-1.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Inter Bold'), local('Inter-Bold'),
+       url('https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduqm-1.woff2') format('woff2');
+}
+
+/* --- Roboto (secondary) --- */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto Regular'), local('Roboto-Regular'),
+       url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+       url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9vAA.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Roboto SemiBold'), local('Roboto-SemiBold'),
+       url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9vAA.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9vBBg.woff2') format('woff2');
+}
+
+/* =============================================================================
+   Font feature hints for Khmer shaping
+   ============================================================================= */
+:root {
+  font-feature-settings: "kern" 1;
+  font-variant-ligatures: common-ligatures;
+}
+
+/* Khmer text rendering optimization */
+[lang="km"], .font-khmer {
+  font-family: 'Kantumruy Pro', 'Inter', sans-serif;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  /* Improve Khmer complex cluster rendering */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Latin / numbers */
+[lang="en"], .font-latin {
+  font-family: 'Inter', 'Roboto', sans-serif;
+}

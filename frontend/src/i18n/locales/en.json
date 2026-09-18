@@ -1,11 +1,207 @@
 {
-  "app": { "title": "Ambulance", "subtitle": "Ministry of Health" },
+  "app": {
+    "title": "Ambulance",
+    "subtitle": "Ministry of Health",
+    "ministry": "Ministry of Health",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "request": "Request",
+    "back": "Back",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "common": {
+    "send": "Send",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "retry": "Retry",
+    "next": "Next",
+    "previous": "Previous",
+    "done": "Done",
+    "yes": "Yes",
+    "no": "No",
+    "optional": "(optional)",
+    "required": "*",
+    "viewImage": "View Image",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
   "request": {
     "button": "Request Ambulance",
-    "status": { "preparing": "Preparing", "en_route": "En Route", "arrived": "Arrived", "received": "Received" }
+    "title": "Request Ambulance",
+    "status": {
+      "preparing": "Preparing",
+      "en_route": "En Route",
+      "arrived": "Arrived",
+      "received": "Received",
+      "completed": "Completed"
+    }
   },
-  "form": { "incident_type": "Incident Type", "patient_condition": "Patient Condition", "requester_name": "Requester Name", "phone": "Phone Number", "relationship": "Relationship" },
-  "tracking": { "eta": "ETA", "distance": "Distance", "order_code": "Order Code" },
-  "rating": { "title": "Rate Service", "submit": "Submit" },
-  "completion": { "thank_you": "Thank You!", "back_home": "Back to Home" }
+  "status": {
+    "preparingTitle": "Ambulance is preparing…",
+    "preparingSubtitle": "Please wait at your current location",
+    "enRouteTitle": "Taking patient to hospital",
+    "enRouteSubtitle": "Transporting to hospital",
+    "arrivedTitle": "Patient has been brought to hospital",
+    "arrivedSubtitle": "Delivered to hospital",
+    "receivedTitle": "Hospital received patient",
+    "receivedSubtitle": "Patient received by hospital",
+    "thankYou": "Thank you! Your support is a valuable contribution to helping save human lives.",
+    "incidentLocation": "Incident location",
+    "distance": "Distance",
+    "eta": "ETA",
+    "etaHospital": "Arrival time at hospital"
+  },
+  "emergencyInfo": {
+    "title": "Emergency information",
+    "ambulance": "Ambulance",
+    "licensePlate": "License plate",
+    "licensePlatePlaceholder": "License plate 2222",
+    "hospital": "Hospital",
+    "hospitalName": "Calmet Hospital",
+    "incidentLocation": "Incident location",
+    "locationPlaceholder": "Near A12 road, Area 1, Phnom Penh",
+    "distance": "2.5 kilometers",
+    "destination": "Road 123, Boeung Keng Kang, Phnom Penh"
+  },
+  "incidentInfo": {
+    "title": "Information about the incident",
+    "requester": "Requester",
+    "requesterNamePlaceholder": "Keb Keav",
+    "relationship": "Known person",
+    "phoneNumber": "Phone number",
+    "phonePlaceholder": "096 666 66 67",
+    "requestTime": "When requesting ambulance",
+    "requestTimePlaceholder": "12/01/2026 at 12:26 PM",
+    "incidentType": "Incident type",
+    "incidentTypeValue": "Traffic accident",
+    "incidentDetail": "Vehicle and person",
+    "patientCondition": "Patient condition",
+    "conscious": "Conscious",
+    "unconscious": "Unconscious",
+    "teenager": "Teenager",
+    "adult": "Adult",
+    "photoLabel": "Photo of incident location",
+    "photoPlaceholder": "photo12345678910.png",
+    "photoSize": "12 MB"
+  },
+  "tracking": {
+    "title": "Tracking",
+    "takingPatient": "Taking patient to hospital",
+    "transporting": "Transporting to hospital",
+    "hospitalName": "Calmet Hospital",
+    "arrivedHospital": "Patient has been brought to hospital",
+    "deliveredToHospital": "Delivered to hospital",
+    "hospitalReceived": "Hospital received patient",
+    "eta": "ETA",
+    "distance": "Distance",
+    "orderCode": "Order code",
+    "timeline": {
+      "preparing": "Ambulance is preparing",
+      "enRoute": "Transporting to hospital",
+      "arrived": "Arrived at hospital",
+      "received": "Hospital received patient"
+    }
+  },
+  "orderSummary": {
+    "title": "Order Summary",
+    "exitHospital": "Exit from hospital",
+    "incidentLocation": "Incident location",
+    "hospital": "Hospital",
+    "orderCode": "Order code",
+    "orderCodePlaceholder": "1234568",
+    "dateAndDuration": "Date and total duration",
+    "datePlaceholder": "12/01/2026 12:46 PM",
+    "duration": "10 minutes",
+    "requestAmbulance": "Request ambulance",
+    "backHome": "Back to home page"
+  },
+  "rating": {
+    "title": "Rate service",
+    "description": "Thank you for using the ambulance service. We will strive to provide good service to you.",
+    "ratingLabel": "Rating *",
+    "feedbackPlaceholder": "The ambulance processed quickly to receive the patient",
+    "submit": "Send",
+    "stars": {
+      "1": "Very bad",
+      "2": "Bad",
+      "3": "Average",
+      "4": "Good",
+      "5": "Excellent"
+    }
+  },
+  "completion": {
+    "thankYou": "Thank you!",
+    "message": "Your support is a valuable contribution to helping save human lives.",
+    "backHome": "Back to home page",
+    "requestAnother": "Request ambulance"
+  },
+  "form": {
+    "incidentType": "Incident type",
+    "patientCondition": "Patient condition",
+    "requesterName": "Requester name",
+    "phoneNumber": "Phone number",
+    "relationship": "Relationship",
+    "photo": "Photo of incident location",
+    "incidentTypes": {
+      "trafficAccident": "Traffic accident",
+      "medicalEmergency": "Medical emergency",
+      "fire": "Fire",
+      "other": "Other"
+    },
+    "relationships": {
+      "self": "Self",
+      "known": "Known person",
+      "family": "Family",
+      "stranger": "Stranger"
+    },
+    "conditions": {
+      "conscious": "Conscious",
+      "unconscious": "Unconscious",
+      "bleeding": "Bleeding",
+      "breathingDifficulty": "Breathing difficulty"
+    },
+    "ages": {
+      "child": "Child",
+      "teenager": "Teenager",
+      "adult": "Adult",
+      "elderly": "Elderly"
+    },
+    "placeholders": {
+      "name": "Enter name",
+      "phone": "Enter phone number",
+      "location": "Enter location"
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidPhone": "Invalid phone number",
+    "invalidName": "Invalid name",
+    "minLength": "Minimum {{count}} characters",
+    "maxLength": "Maximum {{count}} characters",
+    "selectOption": "Please select an option"
+  },
+  "errors": {
+    "network": "Network error, please try again",
+    "server": "Server error, please try again",
+    "notFound": "Not found",
+    "timeout": "Request timed out, please try again",
+    "locationDenied": "Location permission denied, please enable permission",
+    "requestFailed": "Request failed, please try again"
+  },
+  "units": {
+    "km": "kilometers",
+    "minutes": "minutes",
+    "minutesShort": "min",
+    "hours": "hours",
+    "seconds": "seconds",
+    "pm": "PM",
+    "am": "AM"
+  }
 }

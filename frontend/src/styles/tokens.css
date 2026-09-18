@@ -1,60 +1,301 @@
+/* =============================================================================
+   MoH Ambulance Mini App — Design Tokens
+   -----------------------------------------------------------------------------
+   Source: Figma extract (specs/2026-09-17-moh-ambulance/figma-extract.md)
+   Frame: 393 × 852 px (iPhone-class mobile viewport)
+   Primary font: Kantumruy Pro (Khmer)
+   Brand color: #C80D13 (Ambulance / Emergency red)
+   =============================================================================
+   Token naming convention:
+     --<category>-<role>-<scale>
+   Categories: color, font, text, shadow, radius, spacing, z, blur
+   ============================================================================= */
+
 :root {
-  --color-brand: #C80D13;
-  --color-brand-light: #E84A4F;
-  --color-brand-dark: #9E0A0F;
+  /* =========================================================================
+     1. COLOR TOKENS (40+)
+     ========================================================================= */
+
+  /* --- Brand (Red — Ambulance / Emergency) --- */
+  --color-brand: #C80D13;                 /* Primary brand red (strokes, accents) */
+  --color-brand-button: #E02424;          /* Brand red for buttons */
+  --color-brand-dark: #881418;            /* Dark brand red (header strip) */
+  --color-brand-deep: #A50F14;            /* Deep red */
+  --color-brand-muted: rgba(166, 84, 84, 0.4); /* Muted red overlay */
+
+  /* --- Brand Red Tints / Backgrounds --- */
+  --color-brand-tint-1: #FFDFE0;          /* Light red background */
+  --color-brand-tint-2: #FFAFA3;          /* Soft red */
+  --color-brand-tint-3: #FF9DA0;          /* Pink-red */
+  --color-brand-tint-4: #FFF1F1;          /* Very light red (card bg) */
+  --color-brand-tint-5: #FFC7C2;          /* Salmon */
+  --color-brand-translucent: rgba(255, 52, 59, 0.15); /* Red translucent bg */
+  --color-brand-overlay-10: rgba(200, 13, 19, 0.1);   /* Brand red 10% overlay */
+
+  /* --- Neutrals / Grays --- */
   --color-white: #FFFFFF;
   --color-black: #000000;
-  --color-gray-50: #F9FAFB;
-  --color-gray-100: #F3F4F6;
-  --color-gray-200: #E5E7EB;
-  --color-gray-300: #D1D5DB;
-  --color-gray-400: #9CA3AF;
-  --color-gray-500: #6B7280;
-  --color-gray-600: #4B5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1F2937;
-  --color-gray-900: #111827;
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-error: #EF4444;
-  --color-info: #3B82F6;
+  --color-near-black: #030712;            /* Shadow base */
+  --color-ink: #171717;                   /* Near-black */
+  --color-gray-route: #6A7282;            /* Route line stroke */
+  --color-gray-secondary: #4A5565;        /* Secondary text (ts3) */
+  --color-gray-status: #101828;           /* Status text (ts4) */
+  --color-gray-muted: #99A1AF;            /* Date/time text */
+  --color-gray-mid: #909090;              /* Mid gray */
+  --color-gray-dark-text: #404040;        /* Dark text */
+  --color-gray-800: #1F2937;              /* Gray-800 */
+  --color-gray-border: #D4D4D4;           /* Light gray border */
+  --color-gray-300: #D1D5DC;              /* Light gray */
+  --color-gray-200: #E5E7EB;              /* Very light gray */
+  --color-gray-100: #F3F4F6;              /* Background gray */
+  --color-gray-50: #F4F4F5;               /* Zinc-100 */
+
+  /* --- Blue (links, iOS accents) --- */
+  --color-blue: #3A5BBC;                  /* Links (ts7, ts8 — underlined) */
+  --color-blue-light: #7296FF;            /* Light blue */
+  --color-blue-ios: #007AFF;              /* iOS system blue */
+  --color-blue-accent: #0F77F0;           /* iOS accent blue */
+  --color-blue-overlay-20: rgba(1, 109, 205, 0.2); /* Blue 20% overlay */
+
+  /* --- Green (Success) --- */
+  --color-success: #1BA73C;               /* Success green */
+
+  /* --- Warning / Orange --- */
+  --color-warning: #FF9E42;               /* Warning orange */
+  --color-warning-bg: #FFE0C2;            /* Warning background */
+
+  /* --- Yellow --- */
+  --color-yellow-bg: #FFF9EB;             /* Light yellow background */
+
+  /* --- Decorative --- */
+  --color-teal: #C6FAF6;                  /* Teal (decorative) */
+  --color-sky: #C2E5FF;                   /* Light blue (decorative) */
+
+  /* --- Translucent overlays --- */
+  --color-black-overlay-20: rgba(0, 0, 0, 0.2);
+  --color-gray-overlay-40: rgba(68, 68, 68, 0.4);
+  --color-white-overlay-20: rgba(255, 255, 255, 0.2);
+  --color-white-overlay-10: rgba(255, 255, 255, 0.1);
+
+  /* --- Semantic surface & text (composed from above) --- */
   --color-background: #FFFFFF;
-  --color-surface: #F9FAFB;
-  --color-text-primary: #111827;
-  --color-text-secondary: #6B7280;
-  --color-text-disabled: #D1D5DB;
-  --font-khmer: 'Kantumruy Pro', sans-serif;
-  --font-latin: 'Inter', 'Roboto', sans-serif;
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-weight-normal: 400;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F3F4F6;
+  --color-surface-card: #FFF1F1;          /* Very light red card bg */
+  --color-text-primary: #101828;
+  --color-text-secondary: #4A5565;
+  --color-text-tertiary: #99A1AF;
+  --color-text-disabled: #D1D5DC;
+  --color-text-inverse: #FFFFFF;
+  --color-text-link: #3A5BBC;
+  --color-border: #D4D4D4;
+  --color-border-subtle: #E5E7EB;
+  --color-error: #C80D13;
+  --color-info: #3A5BBC;
+
+  /* =========================================================================
+     2. GRADIENT TOKENS
+     ========================================================================= */
+  --gradient-brand-button:
+    linear-gradient(143deg, rgba(255,255,255,0.06) 11%, rgba(255,255,255,0.3) 74%),
+    #C80D13;
+  --gradient-brand-bg:
+    linear-gradient(180deg, rgba(136,20,24,1) 12%, rgba(255,241,241,1) 100%),
+    #FFFFFF;
+  --gradient-skeuomorphic:
+    linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%);
+
+  /* =========================================================================
+     3. TYPOGRAPHY TOKENS (30+ styles across 4 font families)
+     ========================================================================= */
+
+  /* --- Font families --- */
+  --font-khmer: 'Kantumruy Pro', 'Inter', sans-serif;   /* Primary Khmer */
+  --font-latin: 'Inter', 'Roboto', sans-serif;           /* Latin / numbers */
+  --font-roboto: 'Roboto', 'Inter', sans-serif;          /* Secondary */
+  --font-ios: -apple-system, 'SF Pro', 'Inter', sans-serif; /* iOS keyboard */
+
+  /* --- Font weights --- */
+  --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  --shadow-xs: 0 1px 2px 0 rgba(0,0,0,0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
-  --shadow-lg-top: 0 -10px 15px -3px rgba(0,0,0,0.1), 0 -4px 6px -4px rgba(0,0,0,0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05);
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  --font-weight-ios-emphasized: 590;
+
+  /* --- Base font sizes --- */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 28px;
+  --font-size-display: 52px;
+
+  /* --- Kantumruy Pro text styles (primary Khmer) --- */
+  --text-h3: 600 28px/1.39 var(--font-khmer);            /* Headline/H3/Mobile/Semibold */
+  --text-h5-semibold: 600 20px/1.4 var(--font-khmer);    /* Headline/H5/Mobile/Semibold */
+  --text-h5-medium: 500 20px/1.4 var(--font-khmer);      /* Headline/H5/Mobile/Medium */
+  --text-h6-semibold: 600 18px/1.33 var(--font-khmer);   /* Headline/H6/Mobile/Semibold */
+  --text-h6-medium: 500 18px/1.33 var(--font-khmer);     /* Headline/H6/Mobile/Medium */
+  --text-h6-desktop: 600 20px/1.6 var(--font-khmer);     /* Headline/H6/Desktop/Semibold */
+  --text-label-l-medium: 500 16px/1.4 var(--font-khmer); /* Label/L/Medium */
+  --text-label-l-regular: 400 16px/1.4 var(--font-khmer);/* Label/L/Regular */
+  --text-label-m-medium: 500 14px/1.4 var(--font-khmer); /* Label/M/Medium */
+  --text-label-m-regular: 400 14px/1.4 var(--font-khmer);/* Label/M/Regular */
+  --text-label-s-semibold: 600 12px/1.4 var(--font-khmer);/* Label/S/Semibold */
+  --text-label-s-medium: 500 12px/1.4 var(--font-khmer); /* Label/S/Medium */
+  --text-paragraph-m: 400 16px/1.5 var(--font-khmer);    /* Paragraph/M/Regular */
+  --text-paragraph-s: 400 14px/1.43 var(--font-khmer);   /* Paragraph/S/Regular */
+  --text-paragraph-s-medium: 500 14px/1.43 var(--font-khmer); /* Paragraph/S/Medium */
+  --text-paragraph-xs: 400 12px/1.67 var(--font-khmer);  /* Paragraph/Xs/Regular */
+
+  /* --- Inter text styles (Latin / numbers) --- */
+  --text-inter-display: 500 52px/1.16 var(--font-latin); /* Display large (letterSpacing -0.02em) */
+  --text-inter-label-l: 500 16px/1.13 var(--font-latin); /* Label/L/Medium */
+  --text-inter-label-m: 500 14px/1.14 var(--font-latin); /* Label/M/Medium */
+  --text-inter-label-m-semibold: 600 14px/1.14 var(--font-latin); /* Label/M/Semibold */
+  --text-inter-paragraph-xs: 400 12px/1.67 var(--font-latin); /* Paragraph/Xs/Regular */
+
+  /* --- Roboto text styles (secondary) --- */
+  --text-roboto-h6: 600 18px/1.33 var(--font-roboto);    /* Headline/H6/Mobile/Semibold */
+  --text-roboto-label-m: 400 14px/1.13 var(--font-roboto); /* Label/M/Regular */
+  --text-roboto-label-m-medium: 500 14px/1.13 var(--font-roboto); /* Label/M/Medium */
+  --text-roboto-label-s: 400 12px/16px var(--font-roboto); /* Label/S/Regular */
+  --text-roboto-paragraph-s: 500 14px/1.43 var(--font-roboto); /* Paragraph/S/Medium */
+  --text-roboto-paragraph-m: 500 16px/1.5 var(--font-roboto); /* Paragraph/M/Medium */
+  --text-roboto-paragraph-xs: 400 12px/1.67 var(--font-roboto); /* Paragraph/Xs/Regular */
+  --text-roboto-title1: 600 16px/1.4 var(--font-roboto); /* Title1/SemiBold */
+  --text-roboto-title2: 400 14px/1.4 var(--font-roboto); /* Title2/Regular */
+
+  /* --- SF Pro / iOS keyboard text --- */
+  --text-ios-key: 400 17px/22px var(--font-ios);         /* keyboard labels (letterSpacing -0.024em) */
+  --text-ios-callout: 590 16px/21px var(--font-ios);     /* Callout/Emphasized */
+  --text-ios-key-char: 400 23px/1 var(--font-ios);       /* key chars */
+  --text-ios-key-sub: 400 16px/1 var(--font-ios);        /* key sub */
+
+  /* --- Letter spacing --- */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-ios: -0.024em;
+  --letter-spacing-normal: 0em;
+
+  /* =========================================================================
+     4. SPACING TOKENS
+     ========================================================================= */
+  --spacing-3xs: 4px;
+  --spacing-2xs: 6px;
+  --spacing-xs: 8px;
+  --spacing-sm: 10px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  --spacing-3xl: 32px;
+  --spacing-4xl: 40px;
+  --spacing-5xl: 48px;
+
+  /* Page horizontal margin (content width 361px in 393px frame) */
+  --spacing-page-x: 16px;
+  --content-width: 361px;
+  --frame-width: 393px;
+  --frame-height: 852px;
+
+  /* =========================================================================
+     5. SHADOW TOKENS (7 named + container + mini-apps)
+     ========================================================================= */
+  --shadow-xs: 0px 1px 2px 0px rgba(3, 7, 18, 0.02);
+  --shadow-sm: 0px 1px 3px 0px rgba(60, 60, 60, 0.18);  /* mini-apps */
+  --shadow-md: 0px 2px 4px -2px rgba(3, 7, 18, 0.06), 0px 4px 6px -1px rgba(3, 7, 18, 0.1);
+  --shadow-lg: 0px 2px 2px -1px rgba(3, 7, 18, 0.04), 0px 4px 6px -2px rgba(3, 7, 18, 0.03), 0px 12px 16px -4px rgba(3, 7, 18, 0.08);
+  --shadow-lg-top: 0px 2px 2px -1px rgba(3, 7, 18, 0.04), 0px 4px 6px -2px rgba(3, 7, 18, 0.03), 0px -4px 16px -4px rgba(3, 7, 18, 0.08);
+  --shadow-xl: 0px 3px 3px -1.5px rgba(10, 13, 18, 0.04), 0px 8px 8px -4px rgba(10, 13, 18, 0.03), 0px 20px 24px -4px rgba(10, 13, 18, 0.08);
+  --shadow-container: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+  --shadow-mini-apps: 0px 1px 3px 0px rgba(60, 60, 60, 0.18);
+  --shadow-brand-m: 0px 0px 0px 1px rgba(58, 91, 188, 1), 0px 1px 2px 0px rgba(58, 91, 188, 0.4);
+
+  /* =========================================================================
+     6. BORDER RADIUS TOKENS
+     ========================================================================= */
+  --radius-xs: 6.82px;                   /* Card small radius (Figma) */
+  --radius-sm: 8px;                       /* Cards / buttons */
+  --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
-  --radius-bottom-sheet: 34px 34px 0 0;
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 48px;
+  --radius-pill: 999px;                   /* Pill */
+  --radius-phone-frame: 40px;             /* Phone frame */
+  --radius-bottom-sheet: 34px 34px 0 0;   /* Bottom sheet top */
+
+  /* =========================================================================
+     7. Z-INDEX TOKENS
+     ========================================================================= */
+  --z-base: 0;
+  --z-content: 10;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-bottom-sheet: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+  --z-tooltip: 700;
+
+  /* =========================================================================
+     8. BLUR / BACKDROP EFFECT TOKENS
+     ========================================================================= */
+  --blur-xs: blur(2px);
+  --blur-ios: blur(27px);
+  --blur-lg: blur(41.82px);
+  --blur-md: blur(34.85px);
+  --blur-sm: blur(16.73px);
+
+  /* =========================================================================
+     9. LAYOUT / MOTION TOKENS
+     ========================================================================= */
+  --button-height-sm: 36px;
+  --button-height-base: 44px;
+  --button-height-lg: 48px;
+  --bottom-sheet-radius: 34px;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+  --transition-fast: 150ms ease-out;
+  --transition-base: 200ms ease-out;
+  --transition-slow: 300ms ease-out;
+  --transition-sheet: 280ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
+/* =============================================================================
+   GLOBAL BASE STYLES
+   ============================================================================= */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: var(--font-khmer); color: var(--color-text-primary); background: var(--color-background); }
-.app { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--spacing-lg); }
+
+html, body {
+  font-family: var(--font-khmer);
+  color: var(--color-text-primary);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  /* Mobile WebView: lock to frame width, prevent horizontal scroll */
+  max-width: var(--frame-width);
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: inherit; }
+a { color: var(--color-text-link); text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Utility: Khmer text uses Kantumruy Pro; numbers/Latin use Inter */
+.font-khmer { font-family: var(--font-khmer); }
+.font-latin { font-family: var(--font-latin); }

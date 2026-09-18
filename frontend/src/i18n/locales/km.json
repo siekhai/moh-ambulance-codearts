@@ -1,35 +1,207 @@
 {
   "app": {
     "title": "រថយន្តសង្គ្រោះ",
-    "subtitle": "ក្រសួងសុខាភិបាល"
+    "subtitle": "ក្រសួងសុខាភិបាល",
+    "ministry": "ក្រសួងសុខាភិបាល",
+    "loading": "កំពុងផ្ទុក..."
+  },
+  "nav": {
+    "request": "សំណើ",
+    "back": "ត្រឡប់",
+    "menu": "ម៉ឺនុយ",
+    "close": "បិទ"
+  },
+  "common": {
+    "send": "បញ្ជូន",
+    "submit": "បញ្ជូន",
+    "cancel": "បោះបង់",
+    "confirm": "បញ្ជាក់",
+    "save": "រក្សាទុក",
+    "edit": "កែសម្រួល",
+    "delete": "លុប",
+    "retry": "ព្យាយាមម្ដងទៀត",
+    "next": "បន្ទាប់",
+    "previous": "មុន",
+    "done": "រួចរាល់",
+    "yes": "បាទ/ចាស",
+    "no": "ទេ",
+    "optional": "(ស្រេចចិត្ត)",
+    "required": "*",
+    "viewImage": "មើលរូបភាព",
+    "loading": "កំពុងផ្ទុក...",
+    "error": "មានបញ្ហា",
+    "success": "ជោគជ័យ"
   },
   "request": {
     "button": "ស្នើសុំរថយន្តសង្គ្រោះ",
+    "title": "សំណើរថយន្តសង្គ្រោះ",
     "status": {
       "preparing": "កំពុងរៀបចំ",
       "en_route": "កំពុងធ្វើដំណើរ",
       "arrived": "បានមកដល់",
-      "received": "បានទទួល"
+      "received": "បានទទួល",
+      "completed": "បានបញ្ចប់"
     }
   },
-  "form": {
-    "incident_type": "ប្រភេទហេតុការណ៍",
-    "patient_condition": "ស្ថានភាពអ្នកជំងឺ",
-    "requester_name": "អ្នកស្នើសុំ",
-    "phone": "លេខទូរស័ព្ទ",
-    "relationship": "អ្នកស្គាល់គ្នា"
+  "status": {
+    "preparingTitle": "រថយន្តសង្គ្រោះកំពុងរៀបចំ…",
+    "preparingSubtitle": "សូមរង់ចាំនៅទីតាំងបច្ចុប្បន្ន",
+    "enRouteTitle": "កំពុងយកអ្នកជំងឺទៅមន្ទីរពេទ្យ",
+    "enRouteSubtitle": "កំពុងដឹកទៅមន្ទីរពេទ្យ",
+    "arrivedTitle": "បានយកអ្នកជំងឺមកដល់មន្ទីរពេទ្យ",
+    "arrivedSubtitle": "ដឹកដល់មន្ទីរពេទ្យ",
+    "receivedTitle": "មន្ទីរពេទ្យបានទទួលអ្នកជំងឺ",
+    "receivedSubtitle": "អ្នកជំងឺបានទទួលដោយមន្ទីរពេទ្យ",
+    "thankYou": "សូមអរគុណ! ការគាំទ្ររបស់លោកអ្នកជាចំណែកដ៏មានតម្លៃ ក្នុងការជួយសង្គ្រោះជីវិតមនុស្ស។",
+    "incidentLocation": "ទីតាំងកើតហេតុ",
+    "distance": "ចម្ងាយ",
+    "eta": "ម៉ោងទៅដល់",
+    "etaHospital": "ម៉ោងទៅដល់ប៉ាន់ស្មាន"
+  },
+  "emergencyInfo": {
+    "title": "ព័ត៌មានសង្គ្រោះបន្ទាន់",
+    "ambulance": "រថយន្តសង្គ្រោះ",
+    "licensePlate": "ផ្លាកលេខ",
+    "licensePlatePlaceholder": "ផ្លាកលេខ ២២២២",
+    "hospital": "មន្ទីរពេទ្យ",
+    "hospitalName": "មន្ទីរពេទ្យកាល់ម៉ែត្រ",
+    "incidentLocation": "ទីតាំងកើតហេតុ",
+    "locationPlaceholder": "ជិតផ្លូវ A12, អ៊ីអន ១, ភ្នំពេញ",
+    "distance": "២.៥ គីឡូម៉ែត្រ",
+    "destination": "ផ្លូវ 123, បឹងកេងកង, ភ្នំពេញ"
+  },
+  "incidentInfo": {
+    "title": "ព័ត៌មានអំពីហេតុការណ៍",
+    "requester": "អ្នកស្នើសុំ",
+    "requesterNamePlaceholder": "កែប កែវ",
+    "relationship": "អ្នកស្គាល់គ្នា",
+    "phoneNumber": "លេខទូរស័ព្ទ",
+    "phonePlaceholder": "០៩៦ ៦៦៦ ៦៦ ៦៧",
+    "requestTime": "ពេលស្នើសុំរថយន្តសង្គ្រោះបន្ទាន់",
+    "requestTimePlaceholder": "១២/០១/២០២៦ វេលាម៉ោង ១២:២៦ ថ្ងៃត្រង់",
+    "incidentType": "ប្រភេទហេតុការណ៍",
+    "incidentTypeValue": "គ្រោះថ្នាក់ចរាចរណ៍",
+    "incidentDetail": "ឡាន និងមនុស្ស",
+    "patientCondition": "ស្ថានភាពអ្នកជំងឺ",
+    "conscious": "ខ្លឹង",
+    "unconscious": "សន្លប់",
+    "teenager": "វ័យជំទង់",
+    "adult": "ពេញវ័យ",
+    "photoLabel": "រូបថតកន្លែងកើតហេតុ",
+    "photoPlaceholder": "photo12345678910.png",
+    "photoSize": "12 MB"
   },
   "tracking": {
+    "title": "ការតាមដាន",
+    "takingPatient": "កំពុងយកអ្នកជំងឺទៅមន្ទីរពេទ្យ",
+    "transporting": "កំពុងដឹកទៅមន្ទីរពេទ្យ",
+    "hospitalName": "មន្ទីរពេទ្យកាល់ម៉ែត្រ",
+    "arrivedHospital": "បានយកអ្នកជំងឺមកដល់មន្ទីរពេទ្យ",
+    "deliveredToHospital": "ដឹកដល់មន្ទីរពេទ្យ",
+    "hospitalReceived": "មន្ទីរពេទ្យបានទទួលអ្នកជំងឺ",
     "eta": "ម៉ោងទៅដល់",
     "distance": "ចម្ងាយ",
-    "order_code": "លេខកូដការណ៍"
+    "orderCode": "លេខកូដការណ៍",
+    "timeline": {
+      "preparing": "រថយន្តសង្គ្រោះកំពុងរៀបចំ",
+      "enRoute": "កំពុងដឹកទៅមន្ទីរពេទ្យ",
+      "arrived": "បានដល់មន្ទីរពេទ្យ",
+      "received": "មន្ទីរពេទ្យបានទទួល"
+    }
+  },
+  "orderSummary": {
+    "title": "សេចក្តីសង្ខេបការណ៍",
+    "exitHospital": "ចេញពីមន្ទីរពេទ្យ",
+    "incidentLocation": "ទីតាំងកើតហេតុ",
+    "hospital": "មន្ទីរពេទ្យ",
+    "orderCode": "លេខកូដការណ៍",
+    "orderCodePlaceholder": "១២៣៤៥៦៨",
+    "dateAndDuration": "កាលបរិច្ឆេទ និងថិរវេលាសរុប",
+    "datePlaceholder": "១២/០១/២០២៦ ១២:៤៦ ថ្ងៃត្រង់",
+    "duration": "១០ នាទី",
+    "requestAmbulance": "ស្នើសុំរថយន្តសង្គ្រោះ",
+    "backHome": "ត្រឡប់ទៅទំព័រដើម"
   },
   "rating": {
     "title": "វាយតម្លៃសេវាកម្ម",
-    "submit": "បញ្ជូន"
+    "description": "សូមអរគុណសម្រាប់ការប្រើប្រាស់សេវាកម្មរថយន្តសង្រោះបន្ទាន់ យើងខ្ញុំនឹងព្យាយាមផ្តល់សេវាកម្មដ៏ល្អទៅកាន់អ្នក។",
+    "ratingLabel": "ការវាយតម្លៃ (Rating) *",
+    "feedbackPlaceholder": "រថយន្តសង្គ្រោះធ្វើដំណើរមកទទួលអ្នកជំងឺបានលឿនណាស់",
+    "submit": "បញ្ជូន",
+    "stars": {
+      "1": "ខ្លាំងពេក",
+      "2": "មិនល្អ",
+      "3": "ធម្មតា",
+      "4": "ល្អ",
+      "5": "ល្អណាស់"
+    }
   },
   "completion": {
-    "thank_you": "សូមអរគុណ!",
-    "back_home": "ត្រឡប់ទៅទំព័រដើម"
+    "thankYou": "សូមអរគុណ!",
+    "message": "ការគាំទ្ររបស់លោកអ្នកជាចំណែកដ៏មានតម្លៃ ក្នុងការជួយសង្គ្រោះជីវិតមនុស្ស។",
+    "backHome": "ត្រឡប់ទៅទំព័រដើម",
+    "requestAnother": "ស្នើសុំរថយន្តសង្គ្រោះ"
+  },
+  "form": {
+    "incidentType": "ប្រភេទហេតុការណ៍",
+    "patientCondition": "ស្ថានភាពអ្នកជំងឺ",
+    "requesterName": "អ្នកស្នើសុំ",
+    "phoneNumber": "លេខទូរស័ព្ទ",
+    "relationship": "អ្នកស្គាល់គ្នា",
+    "photo": "រូបថតកន្លែងកើតហេតុ",
+    "incidentTypes": {
+      "trafficAccident": "គ្រោះថ្នាក់ចរាចរណ៍",
+      "medicalEmergency": "បញ្ហាសុខភាពបន្ទាន់",
+      "fire": "អគ្គីភ័យ",
+      "other": "ផ្សេងៗ"
+    },
+    "relationships": {
+      "self": "ខ្លួនឯង",
+      "known": "អ្នកស្គាល់គ្នា",
+      "family": "គ្រួសារ",
+      "stranger": "អ្នកមិនស្គាល់"
+    },
+    "conditions": {
+      "conscious": "ខ្លឹង",
+      "unconscious": "សន្លប់",
+      "bleeding": "មានឈាមហូរ",
+      "breathingDifficulty": "ពិបាកស្រួនដកដង្ហ"
+    },
+    "ages": {
+      "child": "កុមារ",
+      "teenager": "វ័យជំទង់",
+      "adult": "ពេញវ័យ",
+      "elderly": "មនុស្សចាស់"
+    },
+    "placeholders": {
+      "name": "បញ្ចូលឈ្មោះ",
+      "phone": "បញ្ចូលលេខទូរស័ព្ទ",
+      "location": "បញ្ចូលទីតាំង"
+    }
+  },
+  "validation": {
+    "required": "ចំណុចនេះត្រូវបានទាមទារ",
+    "invalidPhone": "លេខទូរស័ព្ទមិនត្រឹមត្រូវ",
+    "invalidName": "ឈ្មោះមិនត្រឹមត្រូវ",
+    "minLength": "ត្រូវការតួអក្សរអប្បបរមា {{count}}",
+    "maxLength": "អតិបរមា {{count}} តួអក្សរ",
+    "selectOption": "សូមជ្រើសរើសជម្រើស"
+  },
+  "errors": {
+    "network": "បញ្ហាបណ្ណទំនាក់ទំនាញ សូមព្យាយាមម្ដងទៀត",
+    "server": "មានបញ្ហានៅម៉ាស៊ីនមេ សូមព្យាយាមម្ដងទៀត",
+    "notFound": "រកមិនឃើញ",
+    "timeout": "អស់ពេលកំណត់ សូមព្យាយាមម្ដងទៀត",
+    "locationDenied": "មិនអនុញ្ញតបានទីតាំង សូមបើកការអនុញ្ញត",
+    "requestFailed": "ការស្នើសុំបរាជ័យ សូមព្យាយាមម្ដងទៀត"
+  },
+  "units": {
+    "km": "គីឡូម៉ែត្រ",
+    "minutes": "នាទី",
+    "minutesShort": "នាទ.",
+    "hours": "ម៉ោង",
+    "seconds": "វិនាទី",
+    "pm": "ថ្ងៃត្រង់",
+    "am": "ព្រឹក"
   }
 }

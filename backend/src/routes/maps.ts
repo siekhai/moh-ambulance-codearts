@@ -21,22 +21,16 @@ import {
 
 const router = Router();
 
-/**
- * Lazily build the service. This defers the env-var check until the first
- * request so the server can boot even without a key (health checks, etc.).
- */
 let service: GoogleMapsService | null = null;
 function getService(): GoogleMapsService {
   if (!service) service = GoogleMapsService.fromEnv();
   return service;
 }
 
-/** Exposed for tests to inject a fake service. */
 export function _setGoogleMapsService(s: GoogleMapsService | null): void {
   service = s;
 }
 
-// GET /api/maps/geocode?address=1600 Amphitheatre Pkwy
 router.get('/geocode', async (req: Request, res: Response) => {
   const address = typeof req.query.address === 'string' ? req.query.address : '';
   if (!address.trim()) {
@@ -50,7 +44,6 @@ router.get('/geocode', async (req: Request, res: Response) => {
   }
 });
 
-// GET /api/maps/reverse-geocode?lat=1.3521&lng=103.8198
 router.get('/reverse-geocode', async (req: Request, res: Response) => {
   const parsed = parseLatLngQuery(req);
   if ('error' in parsed) return res.status(400).json({ error: parsed.error });
@@ -62,7 +55,6 @@ router.get('/reverse-geocode', async (req: Request, res: Response) => {
   }
 });
 
-// GET /api/maps/directions?originLat=&originLng=&destLat=&destLng=&mode=driving
 router.get('/directions', async (req: Request, res: Response) => {
   const coords = parseRouteQuery(req);
   if ('error' in coords) return res.status(400).json({ error: coords.error });
@@ -73,8 +65,9 @@ router.get('/directions', async (req: Request, res: Response) => {
       coords.destination,
       { travelMode: mode },
     );
+    const { staticMapUrl: _stripped, ...safeResult } = result;
     return res.json({
-      ...result,
+      ...safeResult,
       etaText: formatETA(
         result.durationInTrafficSeconds ?? result.durationSeconds,
       ),
@@ -85,7 +78,6 @@ router.get('/directions', async (req: Request, res: Response) => {
   }
 });
 
-// GET /api/maps/distance-matrix?origins=lat,lng|lat,lng&destinations=lat,lng
 router.get('/distance-matrix', async (req: Request, res: Response) => {
   const originsRaw = str(req.query.origins);
   const destsRaw = str(req.query.destinations);
@@ -109,7 +101,6 @@ router.get('/distance-matrix', async (req: Request, res: Response) => {
   }
 });
 
-// GET /api/maps/eta?originLat=&originLng=&destLat=&destLng=
 router.get('/eta', async (req: Request, res: Response) => {
   const coords = parseRouteQuery(req);
   if ('error' in coords) return res.status(400).json({ error: coords.error });
@@ -131,8 +122,6 @@ router.get('/eta', async (req: Request, res: Response) => {
 });
 
 export default router;
-
-// --- helpers -----------------------------------------------------------------
 
 function str(v: unknown): string {
   return typeof v === 'string' ? v : '';
@@ -178,7 +167,6 @@ function parseTravelMode(v: unknown): TravelMode {
   return TravelMode.driving;
 }
 
-/** Parse "lat,lng|lat,lng|..." into Coordinates[]. */
 function parseCoordinateList(raw: string): Coordinates[] {
   return raw
     .split('|')
